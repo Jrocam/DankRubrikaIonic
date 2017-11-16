@@ -1,0 +1,39 @@
+<!--
+  Generated template for the AsignaturasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>asignaturas</ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor='let asignatura of srvAsig.asignaturas | async'>
+      <ion-item (click)="irOtraPagina( asignatura.nombre )">
+        <ion-label>{{ asignatura.nombre }}</ion-label>
+        <ion-icon name="ios-arrow-back" item-end color="mygray"></ion-icon>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+        <button ion-button color="primary">
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
