@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AsignaturaDetailPage } from '../asignatura-detail/asignatura-detail';
 //PROVIDERS
 import { SrvAsignaturaProvider } from '../../providers/srv-asignatura/srv-asignatura';
@@ -18,7 +18,12 @@ import { SrvAsignaturaProvider } from '../../providers/srv-asignatura/srv-asigna
 })
 export class AsignaturasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public srvAsig: SrvAsignaturaProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public srvAsig: SrvAsignaturaProvider,
+    public alertCtrl: AlertController
+  ) {
     console.log(this.srvAsig.asignaturas);
   }
 
@@ -26,8 +31,66 @@ export class AsignaturasPage {
     console.log('ionViewDidLoad AsignaturasPage');
   }
 
-  irOtraPagina(p){
-    this.navCtrl.push(AsignaturaDetailPage , { nombreAsig: p} )
+  irOtraPagina(nom, id){
+    console.log("¿id?: "+id);
+    this.navCtrl.push(AsignaturaDetailPage , { nombreAsig: nom , idAsig: id} )
   }
-
+  crearAsignatura(){
+    let newTaskModal = this.alertCtrl.create({
+      title: 'Crear Asignatura',
+      message: "Agrega una nueva asignatura.",
+      inputs: [
+        {
+          name: 'Nombre',
+          placeholder: 'nombre asignatura'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Crear',
+          handler: data => {
+            this.srvAsig.setAsignatura(data.Nombre);
+          }
+        }
+      ]
+    });
+    newTaskModal.present( newTaskModal );
+  }
+  borrarAsignatura(id){
+    this.srvAsig.removeAsignatura(id);
+  }
+  updateAsignatura(id){
+    let newTaskModal = this.alertCtrl.create({
+      title: 'Editar Asignatura',
+      message: "edita tu asignatura.",
+      inputs: [
+        {
+          name: 'Nombre',
+          placeholder: 'nombre asignatura'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Guardar',
+          handler: data => {
+            this.srvAsig.updateAsignatura(id,data.Nombre);
+          }
+        }
+      ]
+    });
+    newTaskModal.present( newTaskModal );
+    
+  }
 }
