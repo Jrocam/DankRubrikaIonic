@@ -17,5 +17,24 @@
 
 
 <ion-content padding>
-
+  <button ion-button full (click)="crearRubrica()">
+      Agregar asignatura
+  </button>
+  <ion-list>
+    <ion-item-sliding *ngFor='let rubrica of srvAsig.rubricas | async'>
+      <button ion-item (click)="irOtraPagina(rubrica.nombre,rubrica.key)">
+        <ion-label>{{ rubrica.nombre }}</ion-label>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="borrarRubrica(rubrica.key)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+        <button ion-button color="primary" (click)="updateRubrica(rubrica.key)">
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
 </ion-content>

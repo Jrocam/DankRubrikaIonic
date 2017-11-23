@@ -24,7 +24,6 @@
     <ion-item-sliding *ngFor='let asignatura of srvAsig.asignaturas | async'>
       <button ion-item (click)="irOtraPagina(asignatura.nombre,asignatura.key)">
         <ion-label>{{ asignatura.nombre }}</ion-label>
-        <ion-icon name="ios-arrow-back" item-end color="mygray"></ion-icon>
       </button>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="borrarAsignatura(asignatura.key)">

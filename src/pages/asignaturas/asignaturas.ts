@@ -18,6 +18,9 @@ import { SrvAsignaturaProvider } from '../../providers/srv-asignatura/srv-asigna
 })
 export class AsignaturasPage {
 
+  searchQuery: string = '';
+  items;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -91,6 +94,5 @@ export class AsignaturasPage {
       ]
     });
     newTaskModal.present( newTaskModal );
-    
   }
 }

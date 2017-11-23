@@ -9,6 +9,7 @@ import { AsignaturasPage} from '../pages/asignaturas/asignaturas';
 import { EvaluacionesPage} from '../pages/evaluaciones/evaluaciones';
 import { RubricasPage} from '../pages/rubricas/rubricas';
 import { AsignaturaDetailPage } from '../pages/asignatura-detail/asignatura-detail';
+import { RubricaDetailPage } from '../pages/rubrica-detail/rubrica-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     AsignaturasPage,
     EvaluacionesPage,
     RubricasPage,
-    AsignaturaDetailPage
+    AsignaturaDetailPage,
+    RubricaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ export const firebaseConfig = {
     AsignaturasPage,
     EvaluacionesPage,
     RubricasPage,
-    AsignaturaDetailPage
+    AsignaturaDetailPage,
+    RubricaDetailPage
   ],
   providers: [
     StatusBar,

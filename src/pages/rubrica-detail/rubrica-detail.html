@@ -1,0 +1,30 @@
+<!--
+  Generated template for the RubricaDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>rubrica-detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let col of filas">
+      <ion-col>{{col.name}} ({{col.icon}}%)</ion-col>
+      <ion-col>{{col.elem}} ({{col.icon}}%)</ion-col>
+      <ion-col>{{col.stuff}}</ion-col>
+      <ion-col>{{col.stuff}}</ion-col>
+      <ion-col>{{col.stuff}}</ion-col>
+      <ion-col>{{col.stuff}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 >This column will take 6 columns</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
