@@ -30,7 +30,10 @@ export class SrvAsignaturaProvider {
   rubricas: Observable<any[]>;
   rubricaObj: AngularFireObject<any>;
 
+  //TABLAS
   filasRef: AngularFireList<any>;
+  filas: Observable<any[]>;
+  filaObj: AngularFireObject<any>;
 
 
   constructor(public database: AngularFireDatabase) {
@@ -125,8 +128,43 @@ export class SrvAsignaturaProvider {
     this.rubricaObj.remove();
   }
   //---------------------------RUBRICA DETAIL CRUD ---------------------------------------------------
-  public crearCategoria(){
-    
+  public getFilas(idrub){
+    this.filasRef = this.database.list('users/Test/rubricas/'+idrub+'/Filas');
+    this.filas = this.filasRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+  }
+  public pushFila(idrub,elem,pele,n1,n2,n3,n4,cat?,pcat?){
+    this.filasRef = this.database.list('users/Test/rubricas/'+idrub+'/Filas');
+    if(cat && pcat){
+      console.log('SOY COMPLETO '+cat)
+      this.filasRef.push(
+        {
+          categoria: cat,
+          catpeso: pcat,
+          elemento: elem,
+          elepeso: pele,
+          n1: n1,
+          n2: n2,
+          n3: n3,
+          n4: n4
+        }
+      );
+    }else{
+      console.log('NO SOY COMPLETO')
+      this.filasRef.push(
+        {
+          categoria: cat,
+          catpeso: pcat,
+          elemento: elem,
+          elepeso: pele,
+          n1: n1,
+          n2: n2,
+          n3: n3,
+          n4: n4
+        }
+      );
+    }
   }
 
 }

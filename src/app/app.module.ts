@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 //PAGES
 import { MyApp } from './app.component';
@@ -11,8 +13,8 @@ import { RubricasPage} from '../pages/rubricas/rubricas';
 import { AsignaturaDetailPage } from '../pages/asignatura-detail/asignatura-detail';
 import { RubricaDetailPage } from '../pages/rubrica-detail/rubrica-detail';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+//MODALS
+import { ModalAddCategoriaPage } from '../pages/modals/modal-add-categoria/modal-add-categoria';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -36,7 +38,8 @@ export const firebaseConfig = {
     EvaluacionesPage,
     RubricasPage,
     AsignaturaDetailPage,
-    RubricaDetailPage
+    RubricaDetailPage,
+    ModalAddCategoriaPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ export const firebaseConfig = {
     EvaluacionesPage,
     RubricasPage,
     AsignaturaDetailPage,
-    RubricaDetailPage
+    RubricaDetailPage,
+    ModalAddCategoriaPage
   ],
   providers: [
     StatusBar,
