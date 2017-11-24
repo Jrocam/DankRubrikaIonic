@@ -99,13 +99,21 @@ export class SrvAsignaturaProvider {
       }
     );
   }
+  public pushExamen(asignaturaID,rubrica,nombre){
+    this.evaluacionesRef = this.database.list('users/Test/asignaturas/'+asignaturaID+'/examenes');
+    this.evaluacionesRef.push({ idrubrica: rubrica, nombre: nombre});
+  }
   public deleteExamen(asignaturaID: string, examID: string){
     this.nuevaEvaluacionRef = this.database.object('users/Test/asignaturas/'+asignaturaID+'/examenes/'+examID);
     this.nuevaEvaluacionRef.remove();
   }
-  public updateExamen(asignaturaID: string, examID: string,rubrica: string){
+  public updateExamen(asignaturaID, examID, nombre, rubrica){
     this.nuevaEvaluacionRef = this.database.object('users/Test/asignaturas/'+asignaturaID+'/examenes/'+examID);
-    this.nuevaEvaluacionRef.update({idrubrica: rubrica})
+    this.nuevaEvaluacionRef.update({nombre: nombre, idrubrica: rubrica});
+  }
+  public sendExamen(asignaturaID,examID,rubrica){
+    this.nuevaEvaluacionRef = this.database.object('users/Test/asignaturas/'+asignaturaID+'/examenes/'+examID);
+    this.nuevaEvaluacionRef.update({idrubrica: rubrica});
   }
   //---------------------------RUBRICAS CRUD ---------------------------------------------------
   public getRubricas(){
@@ -154,8 +162,8 @@ export class SrvAsignaturaProvider {
       console.log('NO SOY COMPLETO')
       this.filasRef.push(
         {
-          categoria: cat,
-          catpeso: pcat,
+          categoria: ' ',
+          catpeso: ' ',
           elemento: elem,
           elepeso: pele,
           n1: n1,

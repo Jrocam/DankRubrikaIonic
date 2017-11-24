@@ -16,21 +16,22 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-        <ion-col>Categorías</ion-col>
-        <ion-col>Elementos</ion-col>
-        <ion-col style="text-align:center; background: #45b27d">1</ion-col>
-        <ion-col style="text-align:center; background: #3dbd72">3</ion-col>
-        <ion-col style="text-align:center; background: #35c768">4</ion-col>
-        <ion-col style="text-align:center; background: #2dd25d">5</ion-col>
+        <ion-col style="font-weight: bold;">Categorías (%) </ion-col>
+        <ion-col style="font-weight: bold;">Elementos (%)</ion-col>
+        <ion-col style="text-align:center; font-weight: bold; background: #45b27d">1-2</ion-col>
+        <ion-col style="text-align:center; font-weight: bold; background: #3dbd72">3</ion-col>
+        <ion-col style="text-align:center; font-weight: bold; background: #35c768">4</ion-col>
+        <ion-col style="text-align:center; font-weight: bold; background: #2dd25d">5</ion-col>
     </ion-row>
     <ion-row *ngFor="let col of srvdb.filas | async">
-      <ion-col>{{col.categoria}} ({{col.catpeso}}%)</ion-col>
-      <ion-col>{{col.elemento}} ({{col.elepeso}}%)</ion-col>
+      <ion-col>{{col.categoria}} {{col.catpeso}}</ion-col>
+      <ion-col>{{col.elemento}} {{col.elepeso}}</ion-col>
       <ion-col style="text-align:center;">{{col.n1}}</ion-col>
       <ion-col style="text-align:center;">{{col.n2}}</ion-col>
       <ion-col style="text-align:center;">{{col.n3}}</ion-col>
       <ion-col style="text-align:center;">{{col.n4}}</ion-col>
     </ion-row>
   </ion-grid>
-  <button ion-button block outline (click)="openAddCategoriaModal()"> Agregar Categoría +</button>
+  <button ion-button round (click)="AddElementoModal()" color=light> Agregar Elemento </button>
+  <button ion-button block round (click)="AddCategoriaModal()" color=light> Agregar Categoría +</button>
 </ion-content>

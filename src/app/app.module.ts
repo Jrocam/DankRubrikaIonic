@@ -15,7 +15,7 @@ import { RubricaDetailPage } from '../pages/rubrica-detail/rubrica-detail';
 
 //MODALS
 import { ModalAddCategoriaPage } from '../pages/modals/modal-add-categoria/modal-add-categoria';
-
+import { ModalRubricasExamPage } from '../pages/modals/modal-rubricas-exam/modal-rubricas-exam'
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -39,7 +39,8 @@ export const firebaseConfig = {
     RubricasPage,
     AsignaturaDetailPage,
     RubricaDetailPage,
-    ModalAddCategoriaPage
+    ModalAddCategoriaPage,
+    ModalRubricasExamPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,8 @@ export const firebaseConfig = {
     RubricasPage,
     AsignaturaDetailPage,
     RubricaDetailPage,
-    ModalAddCategoriaPage
+    ModalAddCategoriaPage,
+    ModalRubricasExamPage
   ],
   providers: [
     StatusBar,

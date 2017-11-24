@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>modalAddCategoria</ion-title>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="this.navCtrl.pop();">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>Agregar a rúbrica</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,55 +20,48 @@
 
 <ion-content padding>
   <p>
-    Añade una nueva categoría a tu rúbrica.
+    Añade {{this.texto}} a tu rúbrica.
   </p>
 
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf='completo'>
       <ion-label color="primary" floating>Nombre categoría</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]='this.nomcat'></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf='completo'>
+      <ion-label color="primary" fixed>Peso(%)</ion-label>
+      <ion-input [(ngModel)]='this.pescat' type="number" max='100' min='1' placeholder="25">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" floating>Nombre elemento</ion-label>
+      <ion-input [(ngModel)]='this.nomele'></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" fixed>Peso(%)</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input [(ngModel)]='this.pesele' type="number" max='100' min='1' placeholder="25">
+      </ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label color="primary">Inline Label</ion-label>
-      <ion-input placeholder="Text Input"></ion-input>
+      <ion-label color="primary" stacked>Nivel 1 (1-2)</ion-label>
+      <ion-textarea [(ngModel)]='this.niv1' placeholder="Enter a description"></ion-textarea>
     </ion-item>
-  
     <ion-item>
-      <ion-label color="primary" fixed>Fixed Label</ion-label>
-      <ion-input type="tel" placeholder="Tel Input"></ion-input>
+      <ion-label color="primary" stacked>Nivel 2 (2-3)</ion-label>
+      <ion-textarea [(ngModel)]='this.niv2' placeholder="Enter a description"></ion-textarea>
     </ion-item>
-  
     <ion-item>
-      <ion-input type="number" placeholder="Number Input with no label"></ion-input>
+      <ion-label color="primary" stacked>Nivel 3 (3-4)</ion-label>
+      <ion-textarea [(ngModel)]='this.niv3' placeholder="Enter a description"></ion-textarea>
     </ion-item>
-  
     <ion-item>
-      <ion-label color="primary" stacked>Stacked Label</ion-label>
-      <ion-input type="email" placeholder="Email Input"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label color="primary" stacked>Stacked Label</ion-label>
-      <ion-input type="password" placeholder="Password Input"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label color="primary" floating>Floating Label</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-input placeholder="Clear Input" clearInput></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-textarea placeholder="Enter a description"></ion-textarea>
+      <ion-label color="primary" stacked>Nivel 4 (4-5) </ion-label>
+      <ion-textarea [(ngModel)]='this.niv4' placeholder="Enter a description"></ion-textarea>
     </ion-item>
   </ion-list>
+  <button ion-button block outline *ngIf='!this.completo' (click)='agregarElemento()'> Agregar elemento </button>
+  <button ion-button block outline *ngIf='this.completo' (click)='agregarFilaCompleta()'> Agregar categoría </button>
 </ion-content>

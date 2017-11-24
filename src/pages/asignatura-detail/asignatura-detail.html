@@ -47,12 +47,12 @@
   </ion-list>
 
   <ion-list *ngSwitchCase="'examenes'">
-    <button ion-button full (click)="crearExamen()">
+    <button ion-button full (click)="AddRubricaModal()">
       Agregar examen
     </button>
     <ion-item-sliding *ngFor='let examen of srvAsig.evaluaciones | async'>
       <button ion-item >
-        <ion-label>{{ examen.nombre }}</ion-label>
+        <ion-label>{{ examen.nombre }} ({{examen.idrubrica}})</ion-label>
         <ion-icon name="ios-arrow-back" item-end color="mygray"></ion-icon>
       </button>
       <ion-item-options side="right">
@@ -60,7 +60,7 @@
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
-        <button ion-button color="primary" (click)="updateExam(examen.key)">
+        <button ion-button color="primary" (click)="updateRubricaModal(examen.key)">
           <ion-icon name="create"></ion-icon>
           Editar
         </button>
